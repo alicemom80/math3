@@ -319,13 +319,13 @@
 /* 식 보기 버튼 */
 .opts.wide .opt {
   width: auto;
-  padding: 1.5cqh 2cqh 2cqh;
+  padding: 3cqh 2.4cqh 3.4cqh;
 }
 .opts.wide {
-  gap: 2cqh;
+  gap: 2.4cqh;
 }
 .opts.wide .opt b {
-  font-size: 5.5cqh;
+  font-size: 7cqh; /* 가장 긴 식(10 + 3 = 13)이 세 개여도 한 줄에 들어가는 크기 */
   white-space: nowrap;
 }
 

@@ -1,5 +1,5 @@
 // 사바나 마을 게임 3종: 과일 세기(11~20), 두 자리 따라 쓰기, 풍선 숫자 찾기 (key는 villages/savanna.js의 games[].key와 같다)
-import { pickNumber, nearChoices, pickOne } from '@공통/games/logic.js';
+import { pickNumber, nearChoices, pickOne, COUNT_PRAISE } from '@공통/games/logic.js';
 import { makeChoiceGame } from '../choice.js';
 import { bundles, tapToCountBundles } from '../visuals.js';
 import { fruitPrompt, fruitHint, FRUITS } from '../../audio/step3Script.js';
@@ -9,6 +9,7 @@ import { traceGame } from './trace.js';
 const fruitGame = makeChoiceGame({
   key: 'fruit',
   background: 'savanna-base',
+  praise: COUNT_PRAISE, // 과일을 눌러 세는 게임
   levels: [
     [11, 13],
     [11, 16],

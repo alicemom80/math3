@@ -1,6 +1,6 @@
 // 농장 마을 게임 3종: 달걀 꾸러미(묶음과 낱개), 두 자리 비교, 장보기 이야기(더하기·빼기 복습)
 import { h, art } from '@공통/widgets/dom.js';
-import { pickNumber, randInt, nearChoices, pickOne } from '@공통/games/logic.js';
+import { pickNumber, randInt, nearChoices, pickOne, COUNT_PRAISE } from '@공통/games/logic.js';
 import { makeChoiceGame, withDistractors } from '../choice.js';
 import { pics, pair, bundles, tapToCountBundles } from '../visuals.js';
 import * as T from '../../audio/step3Script.js';
@@ -11,6 +11,7 @@ const SHOP_PROP = 'fruit-apple'; // 장보기 물건 그림 (대사는 T.SHOP_FO
 const eggsGame = makeChoiceGame({
   key: 'eggs',
   background: 'farm-base',
+  praise: COUNT_PRAISE, // 달걀을 눌러 세는 게임
   levels: [
     [11, 20],
     [11, 35],

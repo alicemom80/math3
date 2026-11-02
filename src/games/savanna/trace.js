@@ -2,10 +2,9 @@
 // 초록 점과 화살표가 지금 쓸 획의 시작을 알려 준다. 너그럽게 판정한다(lineTrace.js): 벗어나면 멈추고 기다릴 뿐 틀림은 없다.
 // 한동안 가만있으면 노란 점이 지금 획을 한 번 따라가며 보여 준다. 모든 획을 쓰면 정답.
 import { h } from '@공통/widgets/dom.js';
-import { pickNumber } from '@공통/games/logic.js';
+import { pickNumber, DRAW_PRAISE } from '@공통/games/logic.js';
 import { pickHandler, replayClass } from '@공통/games/widgets.js';
 import { buildPath, pointAt, startTrace, pressTrace, moveTrace, releaseTrace, isDone } from '../lineTrace.js';
-import { PICK_PRAISE } from '../choice.js';
 import { tracePrompt } from '../../audio/step3Script.js';
 import { LINE_START_HINT, LINE_IDLE_HINT } from '../../audio/villageScript.js';
 
@@ -108,7 +107,7 @@ function placeArrow(arrow, path) {
 export const traceGame = {
   key: 'trace',
   background: 'savanna-base',
-  praise: PICK_PRAISE,
+  praise: DRAW_PRAISE,
   levels: [
     [10, 20],
     [21, 30],
@@ -164,7 +163,7 @@ export const traceGame = {
       idleTimer = setTimeout(() => {
         if (!alive() || run.state.busy || trace.active) return;
         demos += 1;
-        bubble(LINE_IDLE_HINT, true);
+        if (demos > 1) bubble(LINE_IDLE_HINT, true); // 첫 안내는 말 없이 점만 (방금 들은 설명과 겹치거나 끊지 않게)
         const path = paths[index];
         const from = trace.reached;
         const began = Date.now();
